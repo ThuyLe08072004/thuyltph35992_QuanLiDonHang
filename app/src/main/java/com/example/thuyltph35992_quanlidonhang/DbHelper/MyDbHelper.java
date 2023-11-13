@@ -18,22 +18,21 @@ public class MyDbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String tableDonHang = "CREATE TABLE DonHang (" +
                 "idDH INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "idKhach INTERGER NOT NULL," +
-                "idNV INTERGER NOT NULL," +
+                "idKhach INTEGER NOT NULL," +
+                "idNV INTEGER NOT NULL," +
                 "ngayMua TEXT NOT NULL," +
-                "trangThai TEXT NOT NULL" +
+                "trangThai INTEGER NOT NULL" +
                 ");";
 
         String tableSanPham = "CREATE TABLE SanPham (" +
                 "idSP INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "tenSP TEXT NOT NULL," +
-                "GiaSP TEXT NOT NULL," +
+                "GiaSP INTEGER NOT NULL," +
                 "idHang INTEGER NOT NULL" +
                 ");";
         String tableDonHangChiTiet = "CREATE TABLE DHChiTiet (" +
                 "idDH INTEGER REFERENCES DonHang (idDH)," +
-                "idSP INTEGER NOT NULL" +
-                " REFERENCES SanPham (idSP)," +
+                "idSP INTEGER NOT NULL REFERENCES SanPham (idSP)," +
                 "soLuong TEXT NOT NULL," +
                 "Gia TEXT NOT NULL" +
                 ");";
