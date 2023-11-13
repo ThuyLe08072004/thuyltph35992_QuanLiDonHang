@@ -3,7 +3,7 @@ package com.example.thuyltph35992_quanlidonhang.Adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.thuyltph35992_quanlidonhang.DAO.DonHangDAO;
 import com.example.thuyltph35992_quanlidonhang.Model.DonHang;
 import com.example.thuyltph35992_quanlidonhang.R;
+
 
 import java.util.ArrayList;
 
@@ -43,9 +44,9 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         DonHang donHang = list.get(position);
 
-        holder.idDonHang.setText(donHang.getIdDH());
-        holder.idKhachHang.setText(donHang.getIdKhach());
-        holder.idNhanVien.setText(donHang.getIdNV());
+        holder.idDonHang.setText(donHang.getIdDH()+"");
+        holder.idKhachHang.setText(donHang.getIdKhach()+"");
+        holder.idNhanVien.setText(donHang.getIdNV()+"");
         holder.txtNgayMua.setText(donHang.getNgayMua());
 
         if (donHang.getTrangThai()==1){
@@ -84,6 +85,7 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
                 builder.show();
             }
         });
+
 
     }
 

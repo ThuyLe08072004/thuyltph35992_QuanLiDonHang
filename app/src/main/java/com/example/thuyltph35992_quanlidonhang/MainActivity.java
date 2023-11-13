@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.thuyltph35992_quanlidonhang.Adapter.DonHangAdapter;
 import com.example.thuyltph35992_quanlidonhang.DAO.DonHangDAO;
@@ -17,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     DonHangDAO donHangDAO;
     ArrayList<DonHang> list;
     DonHangAdapter adapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +32,5 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         danhsach.setLayoutManager(linearLayoutManager);
         danhsach.setAdapter(adapter);
-
     }
 }

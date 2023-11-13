@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 
 public class MyDbHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "Qlidonhang";
@@ -40,8 +40,8 @@ public class MyDbHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(tableSanPham);
         sqLiteDatabase.execSQL(tableDonHangChiTiet);
         String dataDonHang = "INSERT INTO DonHang VALUES" +
-                "(1,4,5,'22-12-2023',1)," +
-                "(1,6,9,'11-11-2023',0)";
+                "(1,9,5,'22-12-2023',1)," +
+                "(2,6,9,'11-11-2023',0)";
         String dataSanPham = "INSERT INTO SanPham VALUES" +
                 "(1,'May giat',20000000,4)," +
                 "(2,'tu lanh',30000000,6)";
@@ -54,7 +54,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+    public void onUpgrade(@NonNull SQLiteDatabase db, int i, int i1) {
         String dropTable = "DROP TABLE IF EXISTS DonHang";
         db.execSQL(dropTable);
 
