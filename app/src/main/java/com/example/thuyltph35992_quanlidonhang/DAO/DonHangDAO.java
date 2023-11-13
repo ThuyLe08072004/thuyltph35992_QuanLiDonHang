@@ -15,14 +15,15 @@ public class DonHangDAO {
     SQLiteDatabase database;
 
     public DonHangDAO(Context context) {
-        this.dbHelper = dbHelper;
+        this.dbHelper = new MyDbHelper(context);
     }
-    public ArrayList<DonHang>getALLDonHang(){
-     ArrayList<DonHang> list=new ArrayList<>();
-     database=dbHelper.getReadableDatabase();
-        Cursor c = database.rawQuery("SELECT * FROM tableDonHang",null);
-        while (c.moveToNext()){
-            DonHang donHang= new DonHang(
+
+    public ArrayList<DonHang> getALLDonHang() {
+        ArrayList<DonHang> list = new ArrayList<>();
+        database = dbHelper.getReadableDatabase();
+        Cursor c = database.rawQuery("SELECT * FROM DonHang", null);
+        while (c.moveToNext()) {
+            DonHang donHang = new DonHang(
                     c.getInt(1),
                     c.getInt(2),
                     c.getString(3),
@@ -33,18 +34,20 @@ public class DonHangDAO {
         }
         return list;
     }
-    public long addDH(DonHang donHang){
-        database=dbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("idKhach",donHang.getIdKhach());
-        values.put("idNV",donHang.getIdNV());
-        values.put("ngayMua",donHang.getNgayMua());
-        values.put("trangThai",donHang.getTrangThai());
-        return database.insert("tableDonHang",null,values);
-    }
-    public long delete(int id){
+
+    public long addDH(DonHang donHang) {
         database = dbHelper.getWritableDatabase();
-        return database.delete("tableDonHang","idDH=?",new String[]{String.valueOf(id)});
+        ContentValues values = new ContentValues();
+        values.put("idKhach", donHang.getIdKhach());
+        values.put("idNV", donHang.getIdNV());
+        values.put("ngayMua", donHang.getNgayMua());
+        values.put("trangThai", donHang.getTrangThai());
+        return database.insert("DonHang", null, values);
+    }
+
+    public long delete(int id) {
+        database = dbHelper.getWritableDatabase();
+        return database.delete("DonHang", "idDH=?", new String[]{String.valueOf(id)});
     }
 
 }

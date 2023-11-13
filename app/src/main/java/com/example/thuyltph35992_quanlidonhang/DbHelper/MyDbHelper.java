@@ -17,37 +17,37 @@ public class MyDbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String tableDonHang = "CREATE TABLE DonHang (" +
-                "    idDH      INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "idKhach  INTERGER NOT NULL," +
-                "idNV  INTERGER NOT NULL," +
-                "    ngayMua   TEXT    NOT NULL," +
-                "    trangThai TEXT    NOT NULL" +
+                "idDH INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "idKhach INTERGER NOT NULL," +
+                "idNV INTERGER NOT NULL," +
+                "ngayMua TEXT NOT NULL," +
+                "trangThai TEXT NOT NULL" +
                 ");";
 
         String tableSanPham = "CREATE TABLE SanPham (" +
-                "    idSP   INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "    tenSP  TEXT    NOT NULL," +
-                "    GiaSP    TEXT    NOT NULL," +
-                "    idHang INTEGER NOT NULL" +
+                "idSP INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "tenSP TEXT NOT NULL," +
+                "GiaSP TEXT NOT NULL," +
+                "idHang INTEGER NOT NULL" +
                 ");";
         String tableDonHangChiTiet = "CREATE TABLE DHChiTiet (" +
-                "    idDH    INTEGER REFERENCES DonHang (idDH)," +
-                "    idSP    INTEGER NOT NULL" +
-                "                    REFERENCES SanPham (idSP)," +
-                "    soLuong TEXT    NOT NULL," +
-                "    Gia     TEXT    NOT NULL" +
+                "idDH INTEGER REFERENCES DonHang (idDH)," +
+                "idSP INTEGER NOT NULL" +
+                " REFERENCES SanPham (idSP)," +
+                "soLuong TEXT NOT NULL," +
+                "Gia TEXT NOT NULL" +
                 ");";
         sqLiteDatabase.execSQL(tableDonHang);
         sqLiteDatabase.execSQL(tableSanPham);
         sqLiteDatabase.execSQL(tableDonHangChiTiet);
-        String dataDonHang = "INSERT INTO tableDonHang VALUES" +
-                "(1,4,5,'22-12-2023',1)" +
+        String dataDonHang = "INSERT INTO DonHang VALUES" +
+                "(1,4,5,'22-12-2023',1)," +
                 "(1,6,9,'11-11-2023',0)";
-        String dataSanPham = "INSERT INTO tableSanPham VALUES" +
-                "(1,'May giat',20000000,4)" +
+        String dataSanPham = "INSERT INTO SanPham VALUES" +
+                "(1,'May giat',20000000,4)," +
                 "(2,'tu lanh',30000000,6)";
-        String dataDonHangChiTiet = "INSERT INTO tableDonHangChiTiet VALUES" +
-                "(1,2,3,100000000)" +
+        String dataDonHangChiTiet = "INSERT INTO DHChiTiet VALUES" +
+                "(1,2,3,100000000)," +
                 "(2,3,6,900000000)";
         sqLiteDatabase.execSQL(dataDonHang);
         sqLiteDatabase.execSQL(dataDonHangChiTiet);
@@ -55,10 +55,16 @@ public class MyDbHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        if (i != i1) {
-            sqLiteDatabase.execSQL("");
-        }
+    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+        String dropTable = "DROP TABLE IF EXISTS DonHang";
+        db.execSQL(dropTable);
+
+        String dropTable1 = "DROP TABLE IF EXISTS SanPham";
+        db.execSQL(dropTable1);
+
+        String dropTable2 = "DROP TABLE IF EXISTS DHChiTiet";
+        db.execSQL(dropTable2);
+        onCreate(db);
 
     }
 }
