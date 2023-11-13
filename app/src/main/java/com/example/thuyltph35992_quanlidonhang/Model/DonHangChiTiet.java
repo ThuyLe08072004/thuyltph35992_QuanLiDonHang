@@ -1,4 +1,4 @@
-package com.example.thuyltph35992_quanlidonhang.DTO;
+package com.example.thuyltph35992_quanlidonhang.Model;
 
 public class DonHangChiTiet {
     private int idDH;

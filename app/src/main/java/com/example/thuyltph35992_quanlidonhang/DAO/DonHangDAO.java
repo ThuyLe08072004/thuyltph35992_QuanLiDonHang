@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.thuyltph35992_quanlidonhang.DTO.DonHang;
+import com.example.thuyltph35992_quanlidonhang.Model.DonHang;
 import com.example.thuyltph35992_quanlidonhang.DbHelper.MyDbHelper;
 
 import java.util.ArrayList;
@@ -41,7 +41,10 @@ public class DonHangDAO {
         values.put("ngayMua",donHang.getNgayMua());
         values.put("trangThai",donHang.getTrangThai());
         return database.insert("tableDonHang",null,values);
-
+    }
+    public long delete(int id){
+        database = dbHelper.getWritableDatabase();
+        return database.delete("tableDonHang","idDH=?",new String[]{String.valueOf(id)});
     }
 
 }

@@ -1,9 +1,9 @@
-package com.example.thuyltph35992_quanlidonhang.DTO;
+package com.example.thuyltph35992_quanlidonhang.Model;
 
 public class SanPham {
-    private  int idSP;
-    private  String tenSp;
-    private  int Gia;
+    private int idSP;
+    private String tenSp;
+    private int Gia;
     private int idHangSX;
 
     public SanPham() {

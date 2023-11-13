@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "com.example.thuyltph35992_quanlidonhang"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.thuyltph35992_quanlidonhang"
